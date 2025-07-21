@@ -185,5 +185,5 @@ Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` 
 ## Contacto
 
 Para dudas, sugerencias o colaboración, contacta a:
-- Juan Martinez (@jmartinez) - juan.martinez@antarestechnologies.com
+- Juan Martinez (@jmartinez) - jmartinez@antarestechnologies.com
 - Equipo Antares Technologies SRL
