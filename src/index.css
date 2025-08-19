@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --brand: #0b5fff; }
+
+/* Antares base layout */
+body { @apply bg-neutral-100 text-neutral-900; }
+.card { @apply rounded-2xl shadow p-4 bg-white; }
+.badge { @apply inline-flex items-center px-2 py-0.5 rounded text-sm font-medium; }
+.badge.ok { @apply bg-green-100 text-green-800; }
+.badge.err { @apply bg-red-100 text-red-800; }
+.badge.dis { @apply bg-gray-200 text-gray-800; }
+.sidebar-link { @apply block px-3 py-2 rounded hover:bg-neutral-200; }
+.active { @apply bg-neutral-300; }
