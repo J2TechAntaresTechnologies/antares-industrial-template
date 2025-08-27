@@ -1,0 +1,78 @@
+Cómo arreglarlo (rápido y sin dolor)
+Verificá tu versión de Node
+
+bash
+Copiar
+Editar
+node -v
+npm -v
+Si node -v es menor a v18.x, actualizá con nvm (recomendado):
+
+Instalá/actualizá Node con nvm (Ubuntu 20.04)
+
+bash
+Copiar
+Editar
+# instalar nvm
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+# cargar nvm en la shell actual
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# instalar y usar Node 18 LTS (o 20 si querés)
+nvm install 18
+nvm use 18
+node -v
+Limpiá e instalá dependencias del proyecto
+Desde la carpeta del UI:
+
+bash
+Copiar
+Editar
+rm -rf node_modules package-lock.json
+npm install
+# faltaba el plugin de React para Vite:
+npm i -D @vitejs/plugin-react
+Levantá el dev server
+
+bash
+Copiar
+Editar
+npm run dev
+# abre http://localhost:5173
+Listo, con eso debería arrancar sin drama.
+
+Por qué pasó
+Vite 5 usa ESM moderno y top-level await; Node < 18 no lo banca bien → revienta con ese Unexpected reserved word.
+
+Nuestro vite.config.js importa @vitejs/plugin-react, pero el paquete no estaba instalado aún.
+
+Sugerencia extra (para que no vuelva a pasar)
+Agregá la restricción de engines en package.json así npm te avisa si usás un Node viejo:
+
+json
+Copiar
+Editar
+{
+  "engines": {
+    "node": ">=18"
+  }
+}
+Chequeo de salud (opcional)
+Para ver de un saque tu ambiente:
+
+bash
+Copiar
+Editar
+npx envinfo --system --binaries --npmPackages vite,react,react-dom
+Si después de esto sigue tirando algo raro, pasame el output de:
+
+node -v
+
+npm -v
+
+cat package.json
+
+el nuevo error completo
+
+y lo desarmo en vivo.

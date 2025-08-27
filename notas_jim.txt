@@ -1,0 +1,5 @@
+
+        # --- Ejecución Segura del Script ---
+
+
+ffplay dir rtsp:// 
